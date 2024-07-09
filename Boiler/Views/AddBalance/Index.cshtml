@@ -1,0 +1,44 @@
+@* @model Boiler.ViewModels.LogInViewModel;
+@{
+    Layout = null;
+} *@
+
+<html>
+<head>
+    <title>Add balance</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    @if (ViewData["success"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewData["success"]
+            </div>
+        }
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Add balance
+                </div>
+                <div class="card-body">
+                    <form asp-controller="AddBalance" , asp-action="Index" method="post">
+                        Balance
+                        <input class="form-control mb-3" name="balance" type="number" value="0.00" step="0.01" placeholder="0.00" required id="balance"/>
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-success" type="submit">Add balance</button>
+                        </div>
+
+                        @if (ViewData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["ErrorMessage"]
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

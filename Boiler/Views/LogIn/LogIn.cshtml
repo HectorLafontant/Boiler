@@ -1,0 +1,45 @@
+﻿@model Boiler.ViewModels.LogInViewModel;
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Log In</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Log into your account
+                </div>
+                <div class="card-body">
+                    <form asp-controller="LogIn" , asp-action="LogIn" method="post">
+                        <input class="form-control mb-3" type="text" placeholder="E-mail" required asp-for="Email" />
+                        <input class="form-control mb-3" type="password" placeholder="Password" required asp-for="Password" />
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">Log In</button>
+                        </div>
+
+                        @if (ViewData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["ErrorMessage"]
+                            </div>
+                        }
+                        Don't have an account yet? <a asp-controller="LogIn" asp-action="Register">Register</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
